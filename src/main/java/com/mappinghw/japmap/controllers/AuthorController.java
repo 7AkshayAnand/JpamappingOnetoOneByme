@@ -26,8 +26,16 @@ public class AuthorController {
     }
 
     @PutMapping(path="/{authorId}/worker/{bookId}")
-    public AuthorEntity  assignWorkerToDepartment(@PathVariable Long authorId,@PathVariable Long bookId){
+    public AuthorEntity  assignBookToAuthor(@PathVariable Long authorId,@PathVariable Long bookId){
 
         return authorServices.assignAuthorToBooks(authorId,bookId);
     }
+
+    @PutMapping(path="/{authorId}/writes/{bookId}")
+    public AuthorEntity  assignBooksToAuthor(@PathVariable Long authorId,@PathVariable Long bookId){
+
+        return authorServices.assignBooksToAuthor(authorId,bookId);
+    }
+
+
 }

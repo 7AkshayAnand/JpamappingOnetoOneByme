@@ -41,6 +41,23 @@ public class AuthorServices {
 
 
     }
+
+    public AuthorEntity assignBooksToAuthor(Long authorId,Long bookId){
+        Optional<AuthorEntity> authorEntity=authorRepositories.findById(authorId);
+        Optional<BookEntity>   bookEntity=bookRepositories.findById(bookId);
+        return authorEntity.flatMap(author->
+                bookEntity.map(book->{
+                  book.setAuthorsBook(author);
+//                  as it is bidirectioal mapping so we need to set both bookentity field and author entity field
+                  author.getAllBook().add(book);
+                  authorRepositories.save(author);
+                  return author;
+
+                })).orElse(null);
+
+
+
+    }
 }
 
 // employeeEntity.map(employee->{

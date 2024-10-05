@@ -27,5 +27,9 @@ public class BookEntity {
     @JsonIgnore
     private AuthorEntity authorOfBook;
 
-
+  @ManyToOne
+  @JoinColumn(name="authore_books_id")
+  @JsonIgnore
+   private AuthorEntity authorsBook;
 }
+
