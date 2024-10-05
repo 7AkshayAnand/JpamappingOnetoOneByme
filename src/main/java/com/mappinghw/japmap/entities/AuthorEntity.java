@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -26,5 +28,9 @@ public class AuthorEntity {
     @OneToOne
     @JoinColumn(name="Written_Books")
     private BookEntity publishedBook;
+
+    @OneToMany(mappedBy = "authorsBook")
+    private List<BookEntity> allBook;
+
 
 }
